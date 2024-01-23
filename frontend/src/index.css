@@ -1,0 +1,63 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-disabled {
+      @apply tw-bg-gray-100 tw-text-gray-400 tw-cursor-not-allowed
+  }
+
+  .btn-disabled-no-bg {
+      @apply tw-text-gray-400 tw-cursor-not-allowed
+  }
+
+  .rs-tw-container {
+      @apply tw-border tw-border-gray-300 tw-rounded-md focus:tw-outline-primary focus:tw-ring-0
+  }
+  
+  .rs-tw__control {
+      @apply tw-py-1.5 tw-border-gray-50 tw-w-full tw-shadow-md focus:tw-outline-primary
+  }
+  
+  .rs-of-container {
+      @apply focus:tw-outline-primary
+  }
+  
+  .rs-of__control {
+      @apply tw-border-0 focus:tw-outline-primary 
+  }
+  
+  .tooltip {
+      @apply tw-invisible tw-absolute;
+  }
+  
+  .tooltip-child {
+      @apply tw-invisible tw-absolute;
+  }
+    
+  .has-tooltip:hover .tooltip {
+      @apply tw-visible tw-z-20;
+  }
+
+  .has-tooltip-child:hover .tooltip-child {
+      @apply tw-visible tw-z-30;
+  }
+  
+  .dynamic-react-select-container > .dynamic-react-select__control{
+      @apply tw-border tw-border-red-300
+  }
+  
+}
+
+@layer utilities{
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+  }
+}
