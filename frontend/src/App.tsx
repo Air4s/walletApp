@@ -1,14 +1,10 @@
-import MainRoutes from './routes';
-import './App.css'
+import { RouterProvider } from 'react-router-dom';
+import './App.css';
+import Routes from './routes';
 
-function App() {
 
-  return (
-    <div>
-      <MainRoutes/>
-      {/* <Toaster/> */}
-    </div>
-  );
+const App = () => {
+  return <RouterProvider router={Routes} />
 }
 
 export default App
