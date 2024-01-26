@@ -19,3 +19,8 @@ export type NavigationProps = {
   href: string
   children?: NavigationChildrenProps[]
 }
+
+export type IOutsideDetectorProps = {
+  ref: React.RefObject<HTMLElement>,
+  callback: () => void,
+}

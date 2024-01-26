@@ -28,21 +28,21 @@
       @apply tw-border-0 focus:tw-outline-primary 
   }
   
-  .tooltip {
+  /* .tooltip {
       @apply tw-invisible tw-absolute;
-  }
+  } */
   
   .tooltip-child {
       @apply tw-invisible tw-absolute;
   }
     
-  .has-tooltip:hover .tooltip {
+  /* .has-tooltip:hover .tooltip {
       @apply tw-visible tw-z-20;
   }
 
   .has-tooltip-child:hover .tooltip-child {
       @apply tw-visible tw-z-30;
-  }
+  } */
   
   .dynamic-react-select-container > .dynamic-react-select__control{
       @apply tw-border tw-border-red-300

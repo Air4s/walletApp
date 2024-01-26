@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Sidebar } from './sidebar';
+import TopBar from './topbar';
 
 
 const MainLayout = () => {
@@ -10,6 +11,7 @@ const MainLayout = () => {
       <div className='flex flex-grow overflow-hidden bg-[#F5F5F5]'>
         <Sidebar />
         <div className='flex flex-col w-full'>
+          <TopBar />
           <main className='items-center justify-center overflow-auto'>
             <Outlet />
           </main>
