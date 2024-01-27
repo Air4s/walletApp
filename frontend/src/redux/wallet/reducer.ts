@@ -1,34 +1,24 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as types from './type';
-import * as interfaces from '../../interfaces/wallet';
 
 
-// Define the initial state for the wallet
-const initialState: types.WalletState = types.initialState;
+const walletReducer = (
+  state = types.initialState,
+  action: any
+):types.WalletState => {
 
-// Create a Redux slice for the wallet
-const walletSlice = createSlice({
-  name: 'wallet',
-  initialState,
-  reducers: {
-    getWalletSuccess: (state, action: PayloadAction<interfaces.IGetWallet>) => {
-      return {
-        ...state,
-        getWallet: action.payload,
-      };
-    },
-    // Additional Reducers here . . .
-    // getWalletSuccess: (state, action: PayloadAction<interfaces.IGetWallet>) => {
-    //   return {
-    //     ...state,
-    //     getWallet: action.payload,
-    //   };
-    // },
-  },
-});
+  switch (action.type) {
+    
+  case types.GET_WALLET_SUCCESS: {
+    return {
+      ...state,
+      getWallet: action.payload,
+    };
+  }
 
-// Extract action creators for the wallet
-export const { getWalletSuccess } = walletSlice.actions;
+  default:
+    return state;
+  }
+};
 
-// Export the reducer for the wallet
-export default walletSlice.reducer;
+export default walletReducer;

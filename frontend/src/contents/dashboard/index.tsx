@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { CiWallet, CiBitcoin, CiMoneyBill, CiBank, CiInboxIn, CiGift } from 'react-icons/ci';
 import { BsGraphUpArrow } from 'react-icons/bs';
@@ -7,8 +7,11 @@ import Button from '../../components/button';
 import CashInModal from './modals/cashin';
 import { useDispatch } from 'react-redux';
 import { useDashboardPage } from '../../hooks/page-redux-hooks/dashboard';
+import * as actions from '../../redux/wallet/action';
 import * as pageActions from '../../redux/page-redux/dashboard/action';
 import { Action } from 'redux';
+import BankTransferModal from './modals/banktransfer';
+import { useDashboard } from '../../hooks/redux-hooks/dashboard';
 
 
 interface IconInfo {
@@ -36,12 +39,36 @@ const Dashboard = () => {
 
   const dispatch = useDispatch();
 
-  const { isCashInModalOpen } = useDashboardPage();
+  const { isCashInModalOpen, isBankTransferModalOpen } = useDashboardPage();
+  const { getWallet } = useDashboard();
 
-  const sampleDynamicVal = 16006064;
+  const userDetails = getWallet.data;
+
+  const onSuccessGet = () => {
+    ()=> console.log('yehey tama');
+  };
+  const onFailedGet = () => {
+    ()=> console.log('awts mali');
+  };
+
+  useEffect(() => {
+    console.log('na ue pre!!');
+    
+    dispatch(actions.getWallet({
+      onSuccess: onSuccessGet,
+      onFailed: onFailedGet
+    }));
+  }, [dispatch]);
 
   const onOpenCashIn = () => {
     dispatch(pageActions.displayCashInModal(true) as Action);
+  };
+
+  const onOpenBankTransfer = (tooltipText: string) => {
+    if (tooltipText === 'Bank Transfer') {
+      dispatch(pageActions.displayBankTransferModal(true) as Action);
+    }
+    return;
   };
 
   return (
@@ -57,7 +84,7 @@ const Dashboard = () => {
 
                 <div className='w-3/4'>
                   <p className={twMerge(headingTitleClass, 'h-16 text-2xl')}>
-                  ₱{sampleDynamicVal.toLocaleString()}
+                  ₱{userDetails?.balance?.toLocaleString()}
                   </p>
                 </div>
 
@@ -80,9 +107,21 @@ const Dashboard = () => {
                 <div className='flex space-x-4'>
                   {iconItems.map((iconInfo, index: number) => (
                     <div key={index} className={twMerge(iconContainerClass)}>
-                      <Tooltip tooltipText={iconInfo.tooltipText} position='bottom'>
-                        {iconInfo.icon}
-                      </Tooltip>
+                      <button
+                        className={twMerge(
+                          iconInfo.tooltipText === 'Bank Transfer'
+                            ? 'border-[1px] border-[#0A1D56] rounded-lg'
+                            : '',
+                          'w-full h-full'
+                        )}
+                        onClick={()=> onOpenBankTransfer(iconInfo.tooltipText)}
+                      >
+                        <Tooltip tooltipText={iconInfo.tooltipText} position='bottom'>
+                          {iconInfo.icon}
+                        </Tooltip>
+                      </button>
+                    
+
                     </div>
                   ))}
                 </div>
@@ -95,6 +134,10 @@ const Dashboard = () => {
       <CashInModal 
         isOpen={isCashInModalOpen}
         onClose={()=> dispatch(pageActions.displayCashInModal(false) as Action)}
+      />
+      <BankTransferModal 
+        isOpen={isBankTransferModalOpen}
+        onClose={()=> dispatch(pageActions.displayBankTransferModal(false) as Action)}
       />
     </>
   );

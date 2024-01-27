@@ -16,6 +16,13 @@ const dashboardPageReducer = (
     };
   }
 
+  case types.DISPLAY_BANK_TRANSFER_MODAL: {
+    return {
+      ...state,
+      isBankTransferModalOpen: action.payload,
+    };
+  }
+
   default:
     return state;
   }

@@ -7,3 +7,10 @@ export const displayCashInModal = (payload: boolean): types.DisplayCashInModalAc
     payload,
   };
 };
+
+export const displayBankTransferModal = (payload: boolean): types.DisplayBankTransferModalAction => {
+  return {
+    type: types.DISPLAY_BANK_TRANSFER_MODAL,
+    payload,
+  };
+};
