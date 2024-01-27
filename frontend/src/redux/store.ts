@@ -1,9 +1,12 @@
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
 import rootReducer from './reducers';
+import dashboardPageReducer from './page-redux/dashboard/reducer';
+
 
 const store = configureStore({
   reducer: {
     wallet: rootReducer,
+    dashboard: dashboardPageReducer
     // Just add other reducer here, it is recommended "per module"
   },
   middleware: (getDefaultMiddleware) =>

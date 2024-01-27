@@ -1,5 +1,5 @@
-import { IPayload } from "../../interfaces/common/common";
-import { IGetWallet } from "../../interfaces/wallet";
+import { IPayload } from '../../interfaces/common/common';
+import { IGetWallet } from '../../interfaces/wallet';
 
 
 export type WalletState = typeof initialState;

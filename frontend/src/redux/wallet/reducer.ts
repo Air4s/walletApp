@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import * as types from './type';
-import * as interfaces from '../../interfaces/wallet'
+import * as interfaces from '../../interfaces/wallet';
 
 
 // Define the initial state for the wallet
