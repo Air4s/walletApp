@@ -2,6 +2,7 @@ import React from 'react';
 import { RouteObject } from 'react-router-dom';
 import MainLayout from '../../layout';
 import Dashboard from '../../contents/dashboard';
+import GuideForChecking from '../../contents/guide';
 
 
 export const PrivateRoutes: RouteObject = {
@@ -9,14 +10,14 @@ export const PrivateRoutes: RouteObject = {
   element: <MainLayout />,
   children: [
     {
+      path: '/guides',
+      element: <GuideForChecking />,
+    },
+    {
       path: '/dashboard',
       element: <Dashboard />,
       index: true,
     },
-    // {
-    //   path: '/accounts',
-    //   element: <Account />
-    // },
   ]
 };
 

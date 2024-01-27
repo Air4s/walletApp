@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../../../../components/button';
 import Modal from '../../../../components/modal';
 import Input from '../../../../components/textbox';
+import { useDispatch } from 'react-redux';
+import * as actions from '../../../../redux/wallet/action';
+import * as pageActions from '../../../../redux/page-redux/dashboard/action';
+import toast from 'react-hot-toast';
+import { Action } from 'redux';
+import { AxiosError } from 'axios';
 
 
 interface IProps {
@@ -11,6 +17,48 @@ interface IProps {
 }
 
 const BankTransferModal: React.FC<IProps> = ({ isOpen, onClose, width = 'sm' }) => {
+
+  const dispatch = useDispatch();
+
+  const [debitAmountState, setDebitAmountState] = useState<string>('');
+
+  useEffect(() => {
+    if (!isOpen) {
+      setDebitAmountState('');
+    }
+  }, [isOpen]);
+
+  const onChangeInputAmount = (value: string) => {
+    setDebitAmountState(value);
+  };
+
+  const onSuccessDebit = () => {
+    toast.success('Successful transfer!');
+    dispatch(pageActions.displayBankTransferModal(false) as Action);
+
+    dispatch(actions.getWallet({}));
+    setDebitAmountState('');
+  };
+
+  const onFailedDebit = (error: AxiosError) => {
+    toast.error(`Failed transaction: ${error.response?.data}`);
+  };
+
+  const onDebit = () => {
+    const debitAmountNumber = parseFloat(debitAmountState);
+
+    if (!isNaN(debitAmountNumber)) {
+      dispatch(actions.walletDebit({
+        debitAmount: debitAmountNumber,
+        userId: 1, // The user ID that I have in my db
+        onSuccess: onSuccessDebit,
+        onFailed: onFailedDebit
+      }));
+    } else {
+      console.error('Invalid debit amount value:', debitAmountState);
+      toast.error('Failed to cash in, please try again later');
+    }
+  };
 
   const renderModalContent = () : JSX.Element => {
 
@@ -28,16 +76,19 @@ const BankTransferModal: React.FC<IProps> = ({ isOpen, onClose, width = 'sm' }) 
           <p> Enter amount: </p>
         </div>
         <div className='shadow-none mt-4'>
-          <Input inputType='number' />
+          <Input
+            inputType='number'
+            value={debitAmountState}
+            onChange={(e) => onChangeInputAmount(e.target.value)}
+          />
         </div>
         <div className='mt-10 mb-2 flex justify-center'>
           <Button
             variant='secondary'
             customClassName='w-1/3 border-[1px] border-[#0A1D56]'
-            onClick={()=> console.log('ya')}
+            onClick={onDebit}
           >
             <span> Save </span> 
-            {/* { isAdding && <Spinner /> } */}
           </Button>
         </div>  
       </div>

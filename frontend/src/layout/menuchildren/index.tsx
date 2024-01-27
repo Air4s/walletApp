@@ -64,13 +64,13 @@ const Items = (props: ItemsProps) => {
   const goToDashboard = () => {
     if (props.item.name === 'Dashboard'){
       return navigate('/dashboard');
-    } else navigate('');
+    } else navigate('/guides');
   };
     
   return (
     <Disclosure.Button
       className={twMerge(
-        props.item.name === 'Dashboard' ? 'bg-[#0A1D56] text-white' : 'text-[#0A1D56]',
+        props.item.name === 'Dashboard' ? '' : 'text-[#0A1D56]',
         'w-full hover:font-bold border-2 hover:border-[#0A1D56] group flex items-center pr-5 pl-7 py-3 text-left text-md font-medium shadow-md rounded-md'
       )}
       onClick={goToDashboard}
@@ -82,7 +82,7 @@ const Items = (props: ItemsProps) => {
 
       <span
         className={twMerge(
-          props.item.name === 'Dashboard' ? 'bg-[#0A1D56] text-white' : 'text-[#0A1D56]',
+          props.item.name === 'Dashboard' ? '' : 'text-[#0A1D56]',
         )}
       >
         {props.item.name}

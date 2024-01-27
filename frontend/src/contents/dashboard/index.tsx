@@ -12,13 +12,13 @@ import * as pageActions from '../../redux/page-redux/dashboard/action';
 import { Action } from 'redux';
 import BankTransferModal from './modals/banktransfer';
 import { useDashboard } from '../../hooks/redux-hooks/dashboard';
+import toast from 'react-hot-toast';
 
 
 interface IconInfo {
   icon: React.ReactNode;
   tooltipText: string;
 }
-
 
 const Dashboard = () => {
 
@@ -45,15 +45,13 @@ const Dashboard = () => {
   const userDetails = getWallet.data;
 
   const onSuccessGet = () => {
-    ()=> console.log('yehey tama');
+    ()=> console.log('get user balance success'); // For dev purposes
   };
   const onFailedGet = () => {
-    ()=> console.log('awts mali');
+    toast.error('Error getting user balance, please try again later');
   };
 
   useEffect(() => {
-    console.log('na ue pre!!');
-    
     dispatch(actions.getWallet({
       onSuccess: onSuccessGet,
       onFailed: onFailedGet
@@ -73,7 +71,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="h-full overflow-y-hidden ">
+      <div className="h-full overflow-y-hidden">
         <div className="h-screen">
           <div className='flex mt-8 mx-8 space-x-4'>
 
@@ -84,7 +82,7 @@ const Dashboard = () => {
 
                 <div className='w-3/4'>
                   <p className={twMerge(headingTitleClass, 'h-16 text-2xl')}>
-                  ₱{userDetails?.balance?.toLocaleString()}
+                  ₱{userDetails?.balance?.toLocaleString() || ' ----'}
                   </p>
                 </div>
 
@@ -120,8 +118,6 @@ const Dashboard = () => {
                           {iconInfo.icon}
                         </Tooltip>
                       </button>
-                    
-
                     </div>
                   ))}
                 </div>

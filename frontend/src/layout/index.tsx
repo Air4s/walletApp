@@ -12,7 +12,7 @@ const MainLayout = () => {
         <Sidebar />
         <div className='flex flex-col w-full'>
           <TopBar />
-          <main className='items-center justify-center overflow-auto'>
+          <main className='items-center justify-center overflow-hidden'>
             <Outlet />
           </main>
         </div>

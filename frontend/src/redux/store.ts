@@ -8,7 +8,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: rootReducer, // All of your reducers are need to be here at Redux Store
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false, // Disable serializable check
     thunk: false, // Disable default thunk middleware

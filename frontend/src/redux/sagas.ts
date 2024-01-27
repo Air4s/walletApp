@@ -4,7 +4,7 @@ import { walletSaga } from './wallet/saga';
 
 export default function* rootSaga(): Generator<StrictEffect> {
   yield all([
-    // Add your saga here
+    // Add your saga here, per module
     ...walletSaga,
   ]);
 }

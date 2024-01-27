@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HiOutlineUsers } from 'react-icons/hi';
+import { AiOutlineInfoCircle  } from 'react-icons/ai';
 import { HiOutlineHome } from 'react-icons/hi2';
 import walletLogo from '../../assets/walletlogo.png';
 import { NavigationProps } from '../../interfaces/common/common';
@@ -13,9 +13,9 @@ export const navigationItems : NavigationProps[] = [
     href: '/dashboard'
   },
   {
-    name: 'Accounts',
-    icon: HiOutlineUsers,
-    href: '/accounts'
+    name: 'Guides',
+    icon: AiOutlineInfoCircle,
+    href: '/guides'
   },
 ];
 
@@ -23,9 +23,6 @@ export const navigationItems : NavigationProps[] = [
 export const Sidebar = () => {
 
   const [currentTab, setCurrentTab] = useState(0);
-  //   const navigate = useNavigate();
-  //   const location = useLocation();
-
 
   return (
     <div className='bg-[#F2F597] w-96'>

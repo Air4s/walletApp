@@ -25,7 +25,6 @@ const AuthLogin: React.FC = () => {
 
   const loginFunc = () => {
     isDirty; // to change
-    console.log('sample func');
     navigate('/dashboard');
   };
 
@@ -52,22 +51,6 @@ const AuthLogin: React.FC = () => {
   };
 
   return (
-  //  <div className='w-1/2 h-1/2 bg-orange-200'>
-  //    <form onSubmit={handleSubmit(loginFunc)}>
-  //     <div className=''>
-  //       {/* {renderHeader()} */}
-  //       A sample header
-  //     </div>
-  //     <div className='mt-4'>
-  //       {/* {renderBody()} */}
-  //       A sample body
-  //     </div>
-  //     <div className='my-12 pb-5'>
-  //       {/* {renderFooter()} */}
-  //       A sample footer
-  //     </div>
-  //   </form>
-  //  </div>
     <div className="w-full h-screen bg-authBackground bg-no-repeat bg-left bg-cover block">
       <div className="mr-48 h-full flex justify-end items-center">
         {renderLoginContainer()}
