@@ -31,8 +31,8 @@ const Dashboard = () => {
     { icon: <CiWallet className={iconClass} />, tooltipText: 'Savings' },
     { icon: <CiBitcoin className={iconClass} />, tooltipText: 'Crypto' },
     { icon: <CiBank className={iconClass} />, tooltipText: 'Bank Transfer' },
-    { icon: <CiMoneyBill className={iconClass} />, tooltipText: 'Cash In' },
-    { icon: <CiInboxIn className={iconClass} />, tooltipText: 'This is a tooltip' },
+    { icon: <CiMoneyBill className={iconClass} />, tooltipText: 'Loan' },
+    { icon: <CiInboxIn className={iconClass} />, tooltipText: 'Generate QR' },
     { icon: <CiGift className={iconClass} />, tooltipText: 'Rewards' },
     { icon: <BsGraphUpArrow className='h-4/5 w-4/5 mt-1.5' />, tooltipText: 'Stock Market' },
   ];

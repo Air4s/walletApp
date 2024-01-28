@@ -3,6 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { twMerge } from 'tailwind-merge';
 
+
 interface IProps {
   open: boolean;
   onClose: React.Dispatch<React.SetStateAction<boolean>>;

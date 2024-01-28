@@ -11,7 +11,6 @@ import (
 )
 
 func main() {
-	// Connect to the database
 	database.ConnectDB()
 
 	// Create a new Gin router

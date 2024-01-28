@@ -77,7 +77,7 @@ const GuideForChecking = () => {
           You can check the <i><b> database.go </b></i> to check the initial set up, so it can be replicated easily on other devices.
         </p>
         <p className='my-4'>
-          A <i><b> docker-compose.yml </b></i> is created on the root folder, so that the local db can be set up whoever has the file.
+          A <i><b> docker-compose.yml </b></i> is created on the root folder, so that the local database can be set up (build using docker) whoever has the file.
         </p>
         <p className='my-4'>
           Optional to use the <i><b> makefile </b></i>, for convenience purposes (all of the needed commands are in the makefile).

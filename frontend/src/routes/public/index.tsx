@@ -5,7 +5,7 @@ import Dashboard from '../../contents/dashboard';
 import GuideForChecking from '../../contents/guide';
 
 
-export const PrivateRoutes: RouteObject = {
+export const PublicRoutes: RouteObject = {
   path: '/',
   element: <MainLayout />,
   children: [
@@ -21,4 +21,4 @@ export const PrivateRoutes: RouteObject = {
   ]
 };
 
-export default PrivateRoutes;
+export default PublicRoutes;

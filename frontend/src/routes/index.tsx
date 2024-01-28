@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { PrivateRoutes } from './public';
+import { PublicRoutes } from './public';
 
 
-export const Routes = createBrowserRouter([PrivateRoutes]); // Also, the PublicRoutes should be place here e.g. Login page
+export const Routes = createBrowserRouter([PublicRoutes]); // Also, the Private should be place here
 
 export default Routes;
