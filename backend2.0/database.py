@@ -1,23 +1,21 @@
 import psycopg2
-from google.cloud import secretmanager
 
-def get_database_credentials():
-    # Function to retrieve database credentials from Google Secret Manager
-    # Your implementation here...
-    return {
-        'user': 'postgres',
-        'password': 'letMeIn123',
-        'host': '34.139.84.66',
-        'database': 'wallet_cloud_db'
-    }
 
-def connect_to_database():
-    # Function to connect to the database using retrieved credentials
-    credentials = get_database_credentials()
-    connection = psycopg2.connect(
-        user=credentials['user'],
-        password=credentials['password'],
-        host=credentials['host'],
-        database=credentials['database']
-    )
-    return connection
+def open_connection():
+    db_user = "postgres"
+    db_password = "letMeIn123"
+    db_name = "wallet_db_cloud"
+    db_host = "34.139.84.66"
+    db_port = "5432"
+
+    try:
+        conn = psycopg2.connect(user=db_user,
+                                password=db_password,
+                                host=db_host,
+                                dbname=db_name,
+                                port=db_port)
+        print("Database connected successfully")
+        return conn
+    except psycopg2.Error as e:
+        print(f"Failed to establish database connection: {e}")
+        return None
