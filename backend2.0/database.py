@@ -1,12 +1,13 @@
+import os
 import psycopg2
 
 
 def open_connection():
-    db_user = "postgres"
-    db_password = "letMeIn123"
-    db_name = "wallet_db_cloud"
-    db_host = "34.139.84.66"
-    db_port = "5432"
+    db_user = os.environ.get('DB_USER')
+    db_password = os.environ.get('DB_PASSWORD')
+    db_name = os.environ.get('DB_NAME')
+    db_host = os.environ.get('DB_HOST')
+    db_port = os.environ.get('DB_PORT')
 
     try:
         conn = psycopg2.connect(user=db_user,
