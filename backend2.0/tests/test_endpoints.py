@@ -12,8 +12,8 @@ class TestAppEndpoints(unittest.TestCase):
 
     def test_get_balance(self):
         # The id is required
-        data = {'user_id': 1}
-        response = self.app.get('/balance', json=data)
+        user_id = 1
+        response = self.app.get('/balance', query_string={'user_id': user_id})
         self.assertEqual(response.status_code, 200)
         data = response.json
         self.assertIn('user_id', data)

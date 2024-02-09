@@ -38,7 +38,7 @@ def get_balance():
                 'balance': balance,
                 'message': 'Successfully get the user balance'
             }
-            return jsonify(response)
+            return jsonify(response), 200
         else:
             return jsonify({'message': 'User not found'}), 404
 
@@ -75,7 +75,7 @@ def credit():
                     'user_id': user_id,
                     'balance': balance,
                     'message': 'Funds credited successfully'
-                })
+                }), 200
             else:
                 return jsonify({'error': 'User ID not found'}), 404
     except Exception as e:
@@ -118,7 +118,7 @@ def debit():
                     'user_id': user_id,
                     'balance': balance,
                     'message': 'Funds debited successfully'
-                })
+                }), 200
             else:
                 return jsonify({'error': 'User ID not found'}), 404
     except Exception as e:

@@ -1,10 +1,26 @@
-import { ForkEffect, call, put, takeLatest } from "redux-saga/effects";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  ForkEffect,
+  call,
+  put,
+  takeLatest,
+  CallEffect,
+  PutEffect,
+} from "redux-saga/effects";
 import * as types from "./type";
 import { AxiosError, AxiosResponse } from "axios";
 import { walletRequests } from "../../services/wallet";
 import { IGetWalletResponse } from "../../interfaces/wallet";
 
-function* handleGetWalletAction({ payload }: types.GetWalletAction) {
+type SagaEffect = CallEffect | PutEffect<{ type: string; payload: any }>;
+
+export function* handleGetWalletAction({
+  payload,
+}: types.GetWalletAction): Generator<
+  SagaEffect,
+  void,
+  AxiosResponse<IGetWalletResponse>
+> {
   const { onSuccess, onFailed } = payload;
 
   try {
