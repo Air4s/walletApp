@@ -1,28 +1,31 @@
-import { END_POINTS } from '../constants/end-point';
-import mainApi from '../constants/url';
-import * as payloads from '../interfaces/payloads/wallet';
-
+import mainApi from "../constants/url";
+import * as payloads from "../interfaces/payloads/wallet";
 
 export const walletRequests = {
-  
-  getWalletApi: () => {
-    return mainApi.get(`${END_POINTS.WALLET}/balance`);
+  getWalletApi: (payload: payloads.WalletBalancePayload) => {
+    const { userId } = payload;
+    return mainApi.get("/balance", {
+      params: {
+        user_id: userId,
+      },
+    });
   },
 
   walletCashInApi: (payload: payloads.WalletCashInPayload) => {
-
     const { userId, cashInAmount } = payload;
 
-    return mainApi.post(`${END_POINTS.WALLET}/cash-in?userId=${userId}&cashInAmount=${cashInAmount}`);
+    return mainApi.post("/credit", {
+      amount: cashInAmount,
+      user_id: userId,
+    });
   },
 
   walletDebitApi: (payload: payloads.WalletDebitPayload) => {
-
     const { userId, debitAmount } = payload;
 
-    return mainApi.post(`${END_POINTS.WALLET}/debit?userId=${userId}&debitAmount=${debitAmount}`);
+    return mainApi.post("/debit", {
+      amount: debitAmount,
+      user_id: userId,
+    });
   },
 };
-
-
-

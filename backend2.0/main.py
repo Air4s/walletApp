@@ -1,11 +1,12 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from database import open_connection
 from dotenv import load_dotenv
 import os
 
 
 app = Flask(__name__)
-
+CORS(app)
 
 # Func that validates if the user is existing in the database
 def is_valid_user(user_id):
@@ -19,7 +20,7 @@ invalidUserId = "There are no user that is existing with that user ID"
 
 @app.route('/balance', methods=['GET'])
 def get_balance():
-    user_id = request.json.get('user_id')
+    user_id = request.args.get('user_id')
     if not user_id:
         return jsonify({'error': 'User ID is required for this operation'}), 400
     

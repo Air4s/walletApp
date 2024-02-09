@@ -1,9 +1,5 @@
-
 export interface IGetWalletResponse {
-  data: {
-    id: number;
-    username: string;
-    balance: number;
-  }
-  message: string
+  user_id: number;
+  balance: number;
+  message: string;
 }

@@ -1,5 +1,8 @@
-import { IPayload } from '../common/common';
+import { IPayload } from "../common/common";
 
+export interface WalletBalancePayload extends IPayload {
+  userId: number;
+}
 
 export interface WalletCashInPayload extends IPayload {
   cashInAmount: number;
