@@ -3,7 +3,8 @@ A sample Central Wallet System (CWS)
 
 Frontend - React Typescript, build using Vite, TailwindCSS
 Backend - Go language, GORM, GIN-GONIC
-Additional tools needed - Docker, Any database tool (workbench, dbeaver etc.), Git
+Backend2.0 - Python
+Additional tools needed - Google Cloud Platfom (GCP), Docker, Any database tool (workbench, dbeaver etc.), Git
 
 
 Frontend detailed guide: -------------------------------------------------------
@@ -26,6 +27,8 @@ Our hooks cannot be retrieve without the existent of our "store.ts" or the Redux
 
 Whereas our "interfaces" folder is where we contain our payload interfaces and API response interfaces so it can be reusable at any part and any point of the project.
 
+Tests folder contains file that has for a Unit Testing (JEST).
+
 The "utils" folder is for utilities or any repeatedly used function so it can prevent redundancy of the code structure.
 
 Additionally, since we are using tailwindcss, the "tailwind.config.js" is where you can enable tailwind utilities, define any customization or override a styling.
@@ -46,5 +49,7 @@ The "handlers" folder or it can be also name "controllers" are func that are res
 In  our case, the "handlers/controllers" and "models" are the folders needed mostly on backend development.
 
 You can build an image using Docker Desktop and the details can be check out in our "docker-compose.yaml". With the "init_wallet.sql" that can be utilized for local database set up for development purposes.
+
+@the Backend2.0 folder, it has the same purpose but the code is written in Python. Also, the Unit Testing (Unittest python) are included.
 
 End of Backend detailed guide: -------------------------------------------------
