@@ -1,5 +1,5 @@
 # walletApp
-A sample Central Wallet System (CWS)
+A simple Central Wallet System (CWS)
 
 Frontend - React Typescript, build using Vite, TailwindCSS
 Backend - Go language, GORM, GIN-GONIC
